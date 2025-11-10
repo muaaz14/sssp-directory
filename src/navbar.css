@@ -1,0 +1,306 @@
+/* /Users/m1pro/sssp-dir/sssp/src/navbar.css */
+
+/* Theme variables */
+:root{
+    --nav-height: 140px;
+    --bg: #fff;
+    --bg-alt: #f7f8fa;
+    --primary: #0f62fe;
+    --text: #0f1724;
+    --muted: #6b7280;
+    --glass: rgba(255,255,255,0.75);
+    --shadow: 0 6px 18px rgba(15,23,36,0.08);
+    --radius: 8px;
+    --transition: 180ms cubic-bezier(.2,.9,.2,1);
+    --break-sm: 720px;
+}
+
+/* Root navbar */
+.navbar{
+    width: 100%;
+    height: var(--nav-height);
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 0.5px solid #cccccc79;
+}
+
+.logo{
+    height: 40px;
+}
+
+/* Internal container to center content */
+.navbar__container{
+    width: 100%;
+    max-width: 1180px;
+    /* padding: 0 16px; */
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+/* Left area: logo + brand */
+.navbar__brand{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+
+.brand__text{
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Center: navigation links (desktop) */
+.navbar__links{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: 8px;
+}
+
+.nav-link{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color var(--transition), background var(--transition), transform var(--transition);
+}
+
+.nav-link:hover,
+.nav-link:focus{
+    color: var(--text);
+    background: var(--bg-alt);
+    transform: translateY(-1px);
+    outline: none;
+}
+
+/* Active link */
+.nav-link--active{
+    color: var(--primary);
+    background: rgba(15,98,254,0.06);
+    box-shadow: inset 0 -2px 0 var(--primary);
+}
+
+/* Right area: search, icons, profile */
+.navbar__actions{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Search box */
+.nav-search{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-alt);
+    padding: 6px 10px;
+    border-radius: 999px;
+    min-width: 160px;
+    max-width: 420px;
+    transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.nav-search:focus-within{
+    box-shadow: 0 6px 20px rgba(15,98,254,0.08);
+    transform: translateY(-1px);
+}
+
+.nav-search input{
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    color: var(--text);
+    width: 100%;
+}
+
+/* Icon buttons */
+.icon-btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--muted);
+    border: none;
+    cursor: pointer;
+    transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+
+.icon-btn:hover,
+.icon-btn:focus{
+    background: var(--bg-alt);
+    color: var(--text);
+    transform: translateY(-2px);
+    outline: none;
+}
+
+/* Profile / avatar */
+.nav-profile{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    position: relative;
+    border-radius: 10px;
+    padding: 6px 8px;
+}
+
+.avatar{
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: linear-gradient(135deg,#ffd166,#06d6a0);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+}
+
+/* Profile dropdown */
+.profile__menu{
+    position: absolute;
+    right: 0;
+    top: calc(100% + 10px);
+    min-width: 180px;
+    background: var(--bg);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(2,6,23,0.12);
+    padding: 8px;
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 1200;
+    transform-origin: top right;
+    transition: opacity var(--transition), transform var(--transition);
+    opacity: 0;
+    transform: translateY(-6px) scale(.98);
+}
+
+.profile__menu--open{
+    display: flex;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Menu items */
+.profile__item{
+    padding: 8px 10px;
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.profile__item:hover{
+    background: var(--bg-alt);
+}
+
+/* Responsive: mobile hamburger */
+.hamburger{
+    display: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--muted);
+}
+
+.hamburger:focus{
+    outline: none;
+    background: var(--bg-alt);
+}
+
+@media (max-width: 920px){
+    .navbar__links{ display: none; }
+    .nav-search{ display: none; }
+    .hamburger{ display: inline-flex; }
+}
+
+/* Mobile slide menu */
+.mobile-menu{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    max-width: 320px;
+    transform: translateX(-110%);
+    transition: transform var(--transition);
+    background: linear-gradient(180deg, var(--bg), #fbfbfd);
+    box-shadow: 12px 0 40px rgba(2,6,23,0.12);
+    z-index: 1400;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mobile-menu--open{
+    transform: translateX(0);
+}
+
+/* Mobile links styling */
+.mobile-menu .nav-link{
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+/* Utility: small muted text */
+.small-muted{
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* Focus ring for keyboard navigation */
+:focus{
+    outline: 3px solid rgba(15,98,254,0.12);
+    outline-offset: 2px;
+}
+
+/* Tiny helper for badge counters */
+.badge{
+    display: inline-flex;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 6px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: #ff4757;
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+}
