@@ -30,6 +30,10 @@
     font-size: 12px;
 }
 
+.top-bar a:hover{
+    text-decoration: underline;
+}
+
 .top-bar .right{
     display: flex;
     flex-direction: row;
