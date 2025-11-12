@@ -1,7 +1,23 @@
 import React, { useState } from "react";
 import Navbar from "./navbar";
+import { InfoCircleOutlined } from '@ant-design/icons';
+import { Form, Select, Button, Input, Radio, Tag } from 'antd';
+
+
+
+const customizeRequiredMark = (label, { required }) => (
+  <>
+    {required ? <Tag color="error">Required</Tag> : <Tag color="warning">optional</Tag>}
+    {label}
+  </>
+);
 
 const RegistrationForm = ({ onSubmit }) => {
+    const [form] = Form.useForm();
+    const [requiredMark, setRequiredMarkType] = useState('optional');
+    const onRequiredTypeChange = ({ requiredMarkValue }) => {
+        setRequiredMarkType(requiredMarkValue);
+    };
   const [formData, setFormData] = useState({
     name: "",
     role: "",
@@ -70,10 +86,34 @@ const RegistrationForm = ({ onSubmit }) => {
             
             <div className="form-container">
                 <h2>Register as a Professional</h2>
-                <form onSubmit={handleSubmit}>
+                {/* <form onSubmit={handleSubmit}>
                     <label>
-                    Full Name*
-                    <input type="text" name="name" value={formData.name} onChange={handleChange} />
+                    Title*
+                    <select type="select" name="name" value={formData.name} onChange={handleChange} placeholder="Select" >
+                        <option value="">Select</option>
+                        <option value="Mr.">Mr.</option>
+                        <option value="Ms.">Ms.</option>
+                        <option value="Dr.">Dr.</option>
+                        <option value="Prof.">Prof.</option>
+                    </select>
+                    {errors.name && <p className="error">{errors.name}</p>}
+                    </label>
+
+                    <label>
+                    First Name*
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="John" />
+                    {errors.name && <p className="error">{errors.name}</p>}
+                    </label>
+
+                    <label>
+                    Middle Name*
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Carry" />
+                    {errors.name && <p className="error">{errors.name}</p>}
+                    </label>
+
+                    <label>
+                    Last Name*
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Deo" />
                     {errors.name && <p className="error">{errors.name}</p>}
                     </label>
 
@@ -110,7 +150,28 @@ const RegistrationForm = ({ onSubmit }) => {
                     </label>
 
                     <button type="submit">Submit Registration</button>
-                </form>
+                </form> */}
+
+                <Form
+                    form={form}
+                    layout="vertical"
+                    initialValues={{ requiredMarkValue: requiredMark }}
+                    onValuesChange={onRequiredTypeChange}
+                    requiredMark={requiredMark === 'customize' ? customizeRequiredMark : requiredMark}
+                    >
+                    <Form.Item label="Title" required tooltip="This is a required field">
+                        <Input placeholder="input placeholder" />
+                    </Form.Item>
+                    <Form.Item
+                        label="Field B"
+                        tooltip={{ title: 'Tooltip with customize icon', icon: <InfoCircleOutlined /> }}
+                    >
+                        <Input placeholder="input placeholder" />
+                    </Form.Item>
+                    <Form.Item>
+                        <Button type="primary">Submit</Button>
+                    </Form.Item>
+                </Form>
             </div>
         </div>
     </div>
