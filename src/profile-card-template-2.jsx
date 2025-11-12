@@ -44,25 +44,25 @@ const CardTemp = ({
 
                 {institute && (
                     <div className="info-row">
-                        <p className="info-label">Institute:</p>
+                        <p className="info-label-2">Institute:</p>
                         <p className="info-data reg-location">{institute}</p>
                     </div>
                 )}
 
                 {/* <div className="info-row">
-                    <p className="info-label">Email:</p>
+                    <p className="info-label-2">Email:</p>
                     <p className="info-data reg-email">{email}</p>
                 </div> */}
 
                 <div className="contact-row">
                     {phone && (
                         <div className="info-row">
-                            <p className="info-label">Phone:</p>
+                            <p className="info-label-2">Phone:</p>
                             <p className="info-data" id='reg-contact'>{phone}</p>
                         </div>
                     )}
                     <div className="info-row">
-                        <p className="info-label">Email:</p>
+                        <p className="info-label-2">Email:</p>
                         <p className="info-data reg-email">{email}</p>
                     </div>
                 </div>
