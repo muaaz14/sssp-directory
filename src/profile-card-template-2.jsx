@@ -1,37 +1,74 @@
-import react from 'react';
+import React from 'react';
 
-const CardTemp = () => {
+
+const getInitials = (name) => {
+  if (!name) return "";
+  const parts = name.trim().split(" ");
+  if (parts.length === 1) return parts[0][0].toUpperCase();
+  return (parts[0][0] + parts[1][0]).toUpperCase();
+};
+
+const CardTemp = ({
+    id,
+    name,
+    image,
+    role,
+    institute,
+    expertise,
+    email,
+    phone,
+    description
+}) => {
     return (
-        <div>
-            <div className="card-container-2">
-                <div className="card-header-2">
-                    <img src="/src/assets/dr-azeem.jpg" className="user-image-2"></img>
-                    <div className="user-info-2">
-                        <h3 id='reg-name'>Dr Azeem Khalid</h3>
-                        <div className="designation-2">
-                            <p id='reg-role'>Soil Scientist</p>
+        <div className="card-container-2" data-id={id}>
+            <div className="card-header-2">
+                {image ? (
+                    <img src={image} className="user-image-2" alt={`Profile image of ${name}`} />
+                ) : (
+                    <div className="user-initials-2">
+                        <p>{getInitials(name)}</p>
+                    </div>
+                )}
+                
+                <div className="user-info-2">
+                    <h3 className='reg-name'>{name}</h3>
+                    <div className="designation-2">
+                        <p className='reg-role'>{role}</p>
+                    </div>
+                </div>
+            </div>
+            <div className="card-body">
+                {description && (
+                    <p className='profile-summary'>{description}</p>
+                )}
+
+                {institute && (
+                    <div className="info-row">
+                        <p className="info-label">Institute:</p>
+                        <p className="info-data reg-location">{institute}</p>
+                    </div>
+                )}
+
+                {/* <div className="info-row">
+                    <p className="info-label">Email:</p>
+                    <p className="info-data reg-email">{email}</p>
+                </div> */}
+
+                <div className="contact-row">
+                    {phone && (
+                        <div className="info-row">
+                            <p className="info-label">Phone:</p>
+                            <p className="info-data" id='reg-contact'>{phone}</p>
                         </div>
+                    )}
+                    <div className="info-row">
+                        <p className="info-label">Email:</p>
+                        <p className="info-data reg-email">{email}</p>
                     </div>
                 </div>
-                <div className="card-body">
-                    <p>Dr. Azeem is a leading expert in soil microbiology with over 18 years of experience. His research focuses on...</p>
-                    <div className="info-row">
-                        <p className="info-label">Location:</p>
-                        <p className="info-data" id='reg-location'>Islamabad, Pakistan</p>
-                    </div>
-                    <div className="info-row">
-                        <p className="info-label">Expertise:</p>
-                        <p className="info-data" id='reg-expertise'>Soil Chemistry, Soil Fertility, Nutrient Management</p>
-                    </div>
-                    <div className="info-row">
-                        <p className="info-label">Contact:</p>
-                        <p className="info-data" id='reg-contact'>0301-6005958</p>
-                    </div>
-                    
-                </div>
-                <div className="card-footer">
-                    <button className="see-profile">See Profile</button>
-                </div>
+            </div>
+            <div className="card-footer">
+                <button className="see-profile">See Profile</button>
             </div>
         </div>
     );
