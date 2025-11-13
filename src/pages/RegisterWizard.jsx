@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Steps, Form, Input, Button, message } from "antd";
+import { Steps, Form, Input, InputNumber, Button, message, Select } from "antd";
 import { CheckCircleOutlined } from "@ant-design/icons";
 import "./RegisterWizard.css";
+import KeywordInput from "../components/keyword-input.jsx";
+import AwardsList from "../components/award-list.jsx";
 
 const { Step } = Steps;
 
@@ -15,167 +17,179 @@ const RegisterWizard = () => {
       description: "Let's start with your basic information",
       content: (
         <>
-          <Form.Item
-            label="Full Name"
-            name="name"
-            rules={[{ required: true, message: "Please enter your full name" }]}
-          >
-            <Input placeholder="John Doe" />
+        
+          <Form.Item label="Title" name="title" rules={[{ required: true, message: "Please select a title" }]}>
+            <Select className="select-dpdn" placeholder="Select">
+                <Select.Option value="Dr">Dr</Select.Option>
+                <Select.Option value="Prof">Prof</Select.Option>
+                <Select.Option value="Mr">Mr</Select.Option>
+                <Select.Option value="Ms">Ms</Select.Option>
+                <Select.Option value="Mrs">Mrs</Select.Option>
+            </Select>
           </Form.Item>
-          <Form.Item
-            label="Email"
-            name="email"
-            rules={[{ required: true, message: "Please enter your email" }]}
-          >
+          
+          <Form.Item label="First Name" name="first-name" rules={[{ required: true, message: "Enter your first name" }]}>
+            <Input placeholder="Abraham" />
+          </Form.Item>
+          
+          <Form.Item label="Middle Name" name="middle-name" rules={[{ required: false, message: "Enter your middle name" }]}>
+            <Input placeholder="Benjamin" />
+          </Form.Item>
+
+          <Form.Item label="Last Name" name="last-name" rules={[{ required: true, message: "Enter your last name" }]}>
+            <Input placeholder="Devilliars" />
+          </Form.Item>
+
+          <Form.Item label="Email" name="email" rules={[{ required: true, message: "Enter your email" }]}>
             <Input placeholder="john@example.com" />
+          </Form.Item>
+          
+          <Form.Item label="Phone Number" name="phone-number" rules={[{ required: true, message: "Enter your Phone Number" }]}>
+            <Input placeholder="Enter your phone number" />
           </Form.Item>
         </>
       ),
     },
     {
       title: "Education",
-      description: "Your role and skills",
+      description: "Tell us about your qualifications",
       content: (
         <>
-          <Form.Item
-            label="Role / Profession"
-            name="role"
-            rules={[{ required: true, message: "Please enter your role" }]}
-          >
-            <Input placeholder="UX Designer" />
+          <Form.Item label="Highest Degree Achieved" name="highest-degree" rules={[{ required: true, message: "Select your highest degree achieved" }]}>
+            <Select className="select-dpdn" placeholder="Select">
+                <Select.Option value="PhD">PhD</Select.Option>
+                <Select.Option value="msc-soil-sci">MSc. (Hons.) Agriculture - Soil Science</Select.Option>
+                <Select.Option value="msc-soil-env-sci">MSc. (Hons.) Agriculture - Soil & Environmental Science</Select.Option>
+                <Select.Option value="mphil-env-sci">M. Phil Environmental Science</Select.Option>
+                <Select.Option value="msc-env-sci">MSc. Environmental Science</Select.Option>
+            </Select>
           </Form.Item>
-          <Form.Item
-            label="Expertise"
-            name="expertise"
-            rules={[{ required: true, message: "Please enter your expertise" }]}
-          >
-            <Input placeholder="UI/UX, Product Design, React" />
+
+          <Form.Item label="Year of Passing the Degree" name="degree-year" rules={[{ required: true, message: "Enter the year of passing the degree" }]}>
+            <InputNumber placeholder="2001" className="input-number" />
+          </Form.Item>
+
+          <Form.Item label="Degree Awarding Institute" name="degree-institute" rules={[{ required: true, message: "Enter the name of degree awarding institute" }]}>
+            <Input placeholder="PMAS Arid Agriculture University Rawalpindi" />
           </Form.Item>
         </>
       ),
     },{
       title: "Professional Info",
-      description: "Basic details about you",
+      description: "Provide information about your professional experiences",
       content: (
         <>
-          <Form.Item
-            label="Full Name"
-            name="name"
-            rules={[{ required: true, message: "Please enter your full name" }]}
-          >
-            <Input placeholder="John Doe" />
+          <Form.Item label="Designation" name="designation" rules={[{ required: true, message: "Please enter your expertise" }]}>
+            <Input placeholder="e.g., Associate Professor, Research Assistant" />
           </Form.Item>
-          <Form.Item
-            label="Email"
-            name="email"
-            rules={[{ required: true, message: "Please enter your email" }]}
-          >
-            <Input placeholder="john@example.com" />
+
+          <Form.Item label="Institute / Organization" name="organization" rules={[{ required: true, message: "Please enter your organization name" }]}>
+            <Input placeholder="Enter your organization name" />
+          </Form.Item>
+
+          <Form.Item label="Office Contact" name="office-contact" rules={[{ required: false}]}>
+            <Input placeholder="Enter your office contact" />
+          </Form.Item>
+
+          <Form.Item label="Link to Your Webpage at Organizational Website" name="social-link-org-page" rules={[{ required: false }]}>
+            <Input placeholder="https://example.edu/profile/yourname" />
           </Form.Item>
         </>
       ),
-    },{
-      title: "Contact Info",
-      description: "Basic details about you",
-      content: (
-        <>
-          <Form.Item
-            label="Full Name"
-            name="name"
-            rules={[{ required: true, message: "Please enter your full name" }]}
-          >
-            <Input placeholder="John Doe" />
-          </Form.Item>
-          <Form.Item
-            label="Email"
-            name="email"
-            rules={[{ required: true, message: "Please enter your email" }]}
-          >
-            <Input placeholder="john@example.com" />
-          </Form.Item>
-        </>
-      ),
-    },{
+    },
+    {
       title: "Membership Info",
-      description: "Basic details about you",
+      description: "Tell us about your membership with the Soil Science Society of Pakistan",
       content: (
         <>
-          <Form.Item
-            label="Full Name"
-            name="name"
-            rules={[{ required: true, message: "Please enter your full name" }]}
-          >
-            <Input placeholder="John Doe" />
+          <Form.Item label="Membership Status" name="membership-status" rules={[{ required: true, message: "Select your membership status" }]}>
+            <Select className="select-dpdn" placeholder="Select">
+                <Select.Option value="yes">Member</Select.Option>
+                <Select.Option value="no">Non - Member</Select.Option>
+            </Select>
           </Form.Item>
-          <Form.Item
-            label="Email"
-            name="email"
-            rules={[{ required: true, message: "Please enter your email" }]}
-          >
+
+          <Form.Item label="Membership Type" name="membership-type" rules={[{ required: true, message: "Select your type of membership" }]}>
+            <Select className="select-dpdn" placeholder="Select">
+                <Select.Option value="hon-mem">Honorary Member</Select.Option>
+                <Select.Option value="lif-mem">Life Member</Select.Option>
+                <Select.Option value="reg-mem">Regular Member</Select.Option>
+                <Select.Option value="std-mem">Student Member</Select.Option>
+            </Select>
+          </Form.Item>
+
+          <Form.Item label="Membership ID" name="mem-id" rules={[{ required: true, message: "Please enter your Membership ID" }]}>
             <Input placeholder="john@example.com" />
           </Form.Item>
         </>
       ),
     },{
-      title: "Researches",
-      description: "Basic details about you",
+      title: "Research Profile",
+      description: "Share your research interests and expertise",
       content: (
         <>
-          <Form.Item
-            label="Full Name"
-            name="name"
-            rules={[{ required: true, message: "Please enter your full name" }]}
-          >
-            <Input placeholder="John Doe" />
+          <Form.Item label="Main Area of Research" name="research-are" rules={[{ required: true, message: "Select your strong area of research" }]}>
+            <Select showSearch className="select-dpdn" placeholder="Select">
+                <Select.Option value="hon-mem">Soil & Environmental Chemistry</Select.Option>
+                <Select.Option value="lif-mem">Soil Fertility</Select.Option>
+                <Select.Option value="reg-mem">Plant Nutrition Management</Select.Option>
+                <Select.Option value="std-mem">Soil Microbiology & Biochemistry</Select.Option>
+                <Select.Option value="std-mem">Soil & Water Conversation</Select.Option>
+                <Select.Option value="soil-physics">Soil Physics</Select.Option>
+                <Select.Option value="std-mem">Soil Mineralogy</Select.Option>
+                <Select.Option value="std-mem">Soil Genesis, Survey & Classification</Select.Option>
+                <Select.Option value="std-mem">Soil Contamination</Select.Option>
+                <Select.Option value="std-mem">Air Contamination</Select.Option>
+                <Select.Option value="std-mem">Water Contamination</Select.Option>
+                <Select.Option value="std-mem">Soil Salinity & Biosaline Agriculture</Select.Option>
+                <Select.Option value="std-mem">Climate Change</Select.Option>
+                <Select.Option value="std-mem">GIS, Remote Sensing & Digital Soil Mapping</Select.Option>
+                <Select.Option value="std-mem"> Land Reclamation</Select.Option>
+            </Select>
           </Form.Item>
-          <Form.Item
-            label="Email"
-            name="email"
-            rules={[{ required: true, message: "Please enter your email" }]}
-          >
-            <Input placeholder="john@example.com" />
+
+
+          <Form.Item label="Add Your Keywords (Max 5)">
+            <KeywordInput />
           </Form.Item>
         </>
       ),
-    },{
+    },
+    {
       title: "Online Presence",
-      description: "Basic details about you",
+      description: "Share your professional profiles and webpages",
       content: (
         <>
-          <Form.Item
-            label="Full Name"
-            name="name"
-            rules={[{ required: true, message: "Please enter your full name" }]}
-          >
-            <Input placeholder="John Doe" />
+
+          <Form.Item label="Personal Website" name="social-link-per-web" rules={[{ required: false }]}>
+            <Input placeholder="https://yourwebsite.com" />
           </Form.Item>
-          <Form.Item
-            label="Email"
-            name="email"
-            rules={[{ required: true, message: "Please enter your email" }]}
-          >
-            <Input placeholder="john@example.com" />
+          
+          <Form.Item label="ResearchGate Profile" name="social-link-researchgate" rules={[{ required: false }]}>
+            <Input placeholder="https://scholar.google.com/citations?user=..." />
+          </Form.Item>
+
+          <Form.Item label="Google Scholar Profile" name="social-link-google-scholar" rules={[{ required: false }]}>
+            <Input placeholder="https://scholar.google.com/citations?user=..." />
+          </Form.Item>
+
+          <Form.Item label="ORCID" name="social-link-orcid" rules={[{ required: false }]}>
+            <Input placeholder="0000-0000-0000-0000" />
+          </Form.Item>
+
+          <Form.Item label="LinkedIn Profile Link" name="social-link-linkedin" rules={[{ required: false }]}>
+            <Input placeholder="https://linkedin.com/in/yourprofile" />
           </Form.Item>
         </>
       ),
-    },{
+    },
+    {
       title: "Awards & Honors",
-      description: "Basic details about you",
+      description: "Share any notable awards or recognition you've received",
       content: (
         <>
-          <Form.Item
-            label="Full Name"
-            name="name"
-            rules={[{ required: true, message: "Please enter your full name" }]}
-          >
-            <Input placeholder="John Doe" />
-          </Form.Item>
-          <Form.Item
-            label="Email"
-            name="email"
-            rules={[{ required: true, message: "Please enter your email" }]}
-          >
-            <Input placeholder="john@example.com" />
+          <Form.Item label="Awards & Achievements" name="awards-and-honors" rules={[{ required: false }]}>
+            <AwardsList />
           </Form.Item>
         </>
       ),

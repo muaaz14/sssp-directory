@@ -45,9 +45,25 @@
 }
 
 form {
-  width: auto;
+  width: 400px;
   height: 100%;
+  text-align: left;
 }
+
+input{
+  height: 44px;
+}
+
+
+.select-dpdn{
+  height: 44px;
+}
+
+.input-number{
+    height: 44px;
+    width: 100%;
+}
+
 
 .step-footer {
   display: flex;

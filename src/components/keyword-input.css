@@ -1,0 +1,35 @@
+
+
+.keyword-input-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.keyword-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.keyword-tag {
+  font-size: 0.9rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+}
+
+.keyword-info {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 0.5rem;
+}
+
+.keyword-input-row .add-btn{
+  padding: 8px 12px;
+  height: 100%;
+  width: 60px;
+  width: auto;
+  color: #666;
+  border: 1px solid #666;
+}
