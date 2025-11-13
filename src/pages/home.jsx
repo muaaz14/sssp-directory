@@ -118,10 +118,12 @@ const Home = () => {
                 <h1>National <b>Directory</b></h1>
                 <p>of Soil Science Professionals</p>
                 <div className="actions">
-                  <button className='primary'>Explore Directory</button>
-                  <button className='secondary'>
-                    <Link to="/register">Get Listed</Link>
+                  <button className='primary'>
+                    <Link to="/professional-registration">Get Listed</Link>
                   </button>
+                  {/* <button className='secondary'>
+                    <Link to="/register">Get Listed</Link>
+                  </button> */}
                 </div>
               </div>
             </div>

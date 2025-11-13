@@ -1,0 +1,68 @@
+.wizard-container {
+  display: flex;
+  min-height: 100%;
+  background-color: #fff;
+}
+
+.wizard-sidebar {
+  width: 30%;
+  padding: 24px;
+  gap: 24px;
+  background: #fafafa;
+  border-right: 1px solid #eee;
+}
+
+.wizard-content {
+  flex: 1;
+  padding: 24px;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  place-items: start;
+}
+
+.ant-steps-item-container {
+  padding: 0;
+  height: max-content;
+}
+
+.step-header {
+  margin-bottom: 0;
+}
+
+.step-header h2 {
+  margin: 0;
+  text-align: left;
+  font-size: 18px
+  font-weight: 600;
+}
+
+.step-header p {
+  color: #777;
+  margin: 0;
+  font-size: 12.6px;
+  text-align: left;
+}
+
+form {
+  width: auto;
+  height: 100%;
+}
+
+.step-footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 2rem;
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+}
+
+.footer-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.back-btn {
+  margin-right: 0.5rem;
+}
