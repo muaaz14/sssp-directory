@@ -26,6 +26,10 @@
   height: max-content;
 }
 
+.ant-steps-item-title {
+  font-size: 12.6px;
+}
+
 .step-header {
   margin-bottom: 0;
 }
@@ -33,7 +37,7 @@
 .step-header h2 {
   margin: 0;
   text-align: left;
-  font-size: 18px
+  font-size: 18px;
   font-weight: 600;
 }
 
@@ -47,6 +51,7 @@
 form {
   width: 400px;
   height: 100%;
+  overflow-y: scroll;
   text-align: left;
 }
 
@@ -69,7 +74,7 @@ input{
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
   border-top: 1px solid #eee;
   padding-top: 1rem;
 }
@@ -81,4 +86,60 @@ input{
 
 .back-btn {
   margin-right: 0.5rem;
+}
+
+.review-container {
+  display:flex;
+  flex-direction:column;
+  height: 100%;
+  overflow-y: scroll;
+  gap:16px;
+  padding:12px 0;
+  width: 100%;
+}
+
+.review-section {
+  background:#fafafa;
+  /* border:1px solid #eee; */
+  padding:14px;
+  /* border-radius:6px; */
+  position:relative;
+}
+
+.review-section h3 {
+  margin:0 0 8px;
+  font-size: 12.6px;
+}
+
+.review-section .ant-btn-link {
+  position:absolute;
+  right:12px;
+  top:12px;
+}
+
+.rev-sec {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 14px;
+  background-color: #f4f5f6;
+}
+
+.rev-sec h3{
+  font-size: 12.6px;
+  margin: 0;
+}
+
+.rev-sec .sec-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sec-body p {
+  width: auto;
+}
+
+form {
+  width: 100%;
 }

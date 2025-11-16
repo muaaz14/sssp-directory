@@ -18,9 +18,7 @@ const ProfReg = () => {
                         <div className="container">
                             <h3>National Directory <br></br>of Soil Science Professionals</h3>
                             <p>Advancing soil science research and promoting sustainable agricultural practices in Pakistan.</p>
-                            <a>
-                                <Link to="/">Explore Directory</Link>
-                            </a>
+                            <Link to="/">Explore Directory</Link>
                         </div>
                         <div className="container">
                             <p>All information will be kept confidential and used solely for membership and professional networking purposes.</p>
